@@ -15,4 +15,10 @@ public class Player{
     name = playerName;
   }
   
+  public String getStats(){
+      return "Name: " + name +"\nHealth: " + health + "\nStrength: " + strength
+      + "\nLuck" + luck + "\nMana Points: " + mp + "\nSpeed: " + speed;
+    
+    
+  }
 }
