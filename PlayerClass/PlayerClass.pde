@@ -22,15 +22,52 @@ public class Player{
       + "\nLuck" + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
   }
   
-  public float attack(){
-    return strength;
+  public float[] attack(){
+    float [] temp = new float[4];
+    float attack = strength;
+    float hp = health;
+    float mana = mp;
+    float Speed = speed;
+    
+    if(item.equals("Sword")){
+      attack += 2;
+    }
+    if(item.equals("Armor")){
+      hp += 20;
+    }if(item.equals("Boots")){
+      speed+= 1;
+    }if(item.equals("Crystal")){
+      mana += 3;
+    }
+    temp[0] = attack;
+    temp[1] = hp;
+    temp[2] = mana;
+    temp[3] = Speed;
+    return temp;
   }
   
   public String equipItem(String equipment){
     item = equipment;
-    if(item.equals("Sword")){
-      strength += 2;
-    }
+    return "You have equipped: " + item;
+  }
+  
+  public void moveUp(){
+    
+  }
+  
+  public void moveLeft(){
+    
+    
+  ]
+  
+  public void moveRight(){
+    
+    
+  }
+  
+  public void moveDown(){
+    
+  
   }
   
   
