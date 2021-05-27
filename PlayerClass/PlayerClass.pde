@@ -5,6 +5,8 @@ public class Player{
   private float luck;
   private float mp;
   private float speed; 
+  private String item;
+  
   
   public Player(String playerName){
     health = 100;
@@ -17,8 +19,20 @@ public class Player{
   
   public String getStats(){
       return "Name: " + name +"\nHealth: " + health + "\nStrength: " + strength
-      + "\nLuck" + luck + "\nMana Points: " + mp + "\nSpeed: " + speed;
-    
-    
+      + "\nLuck" + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
   }
+  
+  public float attack(){
+    return strength;
+  }
+  
+  public String equipItem(String equipment){
+    item = equipment;
+    if(item.equals("Sword")){
+      strength += 2;
+    }
+  }
+  
+  
+  
 }
