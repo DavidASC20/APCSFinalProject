@@ -61,7 +61,7 @@ public class Player{
   
   public void moveLeft(){
     x-=1;
-  ]
+  }
   
   public void moveRight(){
     x+=1;
