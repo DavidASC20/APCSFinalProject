@@ -11,8 +11,13 @@ public class Player{
   
   
   public Player(String playerName, float x, float y){
+    
     this.x = x;
     this.y = y;
+    color c = color(0, 255, 0);
+    fill(c);
+    rect(x, y, 10, 10);
+    fill(0);
     health = 100;
     strength = 5; 
     luck = 5;
@@ -23,7 +28,7 @@ public class Player{
   
   public String getStats(){
       return "Name: " + name +"\nHealth: " + health + "\nStrength: " + strength
-      + "\nLuck" + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
+      + "\nLuck: " + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
   }
   
   public float[] attack(){
@@ -70,7 +75,6 @@ public class Player{
   public void moveDown(){
     x+= 1;
   }
-  
   
   
 }
