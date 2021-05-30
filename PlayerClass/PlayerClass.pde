@@ -6,9 +6,13 @@ public class Player{
   private float mp;
   private float speed; 
   private String item;
+  private float x;
+  private float y;
   
   
-  public Player(String playerName){
+  public Player(String playerName, float x, float y){
+    this.x = x;
+    this.y = y;
     health = 100;
     strength = 5; 
     luck = 5;
@@ -52,22 +56,19 @@ public class Player{
   }
   
   public void moveUp(){
-    
+      y-=1;
   }
   
   public void moveLeft(){
-    
-    
+    x-=1;
   ]
   
   public void moveRight(){
-    
-    
+    x+=1;
   }
   
   public void moveDown(){
-    
-  
+    x+= 1;
   }
   
   
