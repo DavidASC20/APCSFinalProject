@@ -1,16 +1,15 @@
 public class Player{
-  private String name;
-  private float health;
-  private float strength;
-  private float luck;
-  private float mp;
-  private float speed; 
-  private String item;
-  private float x;
-  private float y;
+  String name;
+  float health;
+  float strength;
+  float luck;
+  float mp;
+  float speed; 
+  String item;
+  float x;
+  float y;
   
-  
-  public Player(String playerName, float x, float y){
+Player(String playerName, float x, float y){
     
     this.x = x;
     this.y = y;
@@ -26,12 +25,12 @@ public class Player{
     name = playerName;
   }
   
-  public String getStats(){
+ String getStats(){
       return "Name: " + name +"\nHealth: " + health + "\nStrength: " + strength
       + "\nLuck: " + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
   }
   
-  public float[] attack(){
+float[] attack(){
     float [] temp = new float[4];
     float attack = strength;
     float hp = health;
@@ -54,27 +53,16 @@ public class Player{
     temp[3] = Speed;
     return temp;
   }
-  
-  public String equipItem(String equipment){
+ 
+
+ 
+    
+    
+String equipItem(String equipment){
     item = equipment;
     return "You have equipped: " + item;
-  }
-  
-  public void moveUp(){
-      y-=1;
-  }
-  
-  public void moveLeft(){
-    x-=1;
-  }
-  
-  public void moveRight(){
-    x+=1;
-  }
-  
-  public void moveDown(){
-    x+= 1;
-  }
+}
+
   
   
 }

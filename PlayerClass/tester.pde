@@ -4,25 +4,22 @@ void settings(){
 }
 void setup(){
   p1 = new Player("David", width / 2, height / 2);
-  text(p1.getStats(), 0, 0);
+}
+void draw(){
+  background(240);
+  
 }
 
-
-//void draw(){
-//   background(240, 240, 240);
-//   p1.move();
-//   p1.display();
-//}
 
 
 void keyPressed(){
   if(key == 'w'){
-    p1.moveUp();
+    p1.y -=1;
   }if(key == 'a'){
-    p1.moveLeft();
+    p1.x -=1;
   }if(key == 's'){
-    p1.moveDown();
+    p1.y += 1;
   }if(key == 'd'){
-    p1.moveRight();
+    p1.x +=1;
   }
 }
