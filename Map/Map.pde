@@ -3,9 +3,9 @@ void setup(){
   size(1200, 900);
   fill(255);
   stroke(0);
-  rooms(0,0,900, 600);
+  rooms(150,150,900, 600);
   
-  randomSpawn(monsters, 900, 600);
+  randomSpawn(monsters, 150, 150, 900, 600, 30);
   
 }
 
@@ -21,11 +21,19 @@ void draw(){
   
 
 void rooms(int xpos, int ypos, int width1, int length1){
-  for(int i = xpos; i < xpos+width1; i+=30){
+  for(int i = xpos; i < xpos+width1; i+=30){//establishes the grid system
     for(int j = ypos; j < ypos+length1; j+=30){
+      if(i == xpos || i == xpos+width1-30 || j == ypos || j == ypos+length1-30){
+        fill(100);
+        stroke(100);
+      }
       rect(i, j, 30, 30);
+      fill(255);
+      stroke(0);
     }
   }
+  
+  
 }
 
 void spawning(ArrayList<Monster> monsters){
@@ -37,10 +45,34 @@ void spawning(ArrayList<Monster> monsters){
   monsters.add(third);
 }
 
-//Precondition: roomWidth, roomHeight are multiples the length of one square
-void randomSpawn(ArrayList<Monster> monsters, int roomWidth, int roomHeight){
-  for(int i = 0; i < 100; i++){//i is amount of monsters
-    Monster create = new Monster((int)(Math.random()*(roomWidth/30)+1)*30, (int)(Math.random()*(roomHeight/30))*30);
-    monsters.add(create);
+//Precondition: roomWidth, roomHeight, roomX, roomY are multiples the length of one square
+void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWidth, int roomHeight, int monsterCount){
+  int howManyDuplicates = 0;//if the room somehow fills up, it won't go forever due to duplicate removal
+  for(int i = 0; i < monsterCount; i++){//i is amount of monsters
+    boolean duplicate = false;
+    int x = (int)(Math.random()*((roomWidth/30)-2))*30+roomX+30;
+    //(Math.random()*((roomWidth/30)-2)) gives the actual grid number, not processing grid
+    //the -2 part elimnates the walls of the room, monsters can't spawn there, the +30 at the very end translates it so the walls are correct
+    //*30 after the above translates it back into processing grid numbers so it gets drawn right
+    //the +roomX translates it into the room number
+    int y = (int)(Math.random()*((roomHeight/30)-2))*30+roomY+30;
+    println(x + " " + y);
+    Monster create = new Monster(x, y);
+    for(Monster a : monsters){//check if its on top of an already spawned monster
+      if(create.getX()==a.getX() && create.getY()==a.getY()){
+        duplicate=true;
+        break;//faster loopings
+      }
+    }
+    if(!duplicate){//redo until it isn't a duplicate
+      monsters.add(create);
+    }
+    else{
+      i--;
+      howManyDuplicates++;
+    }
+    if(howManyDuplicates> monsterCount*2){
+      break;
+    }
   }
 }
