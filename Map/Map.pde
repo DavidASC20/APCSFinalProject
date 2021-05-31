@@ -1,10 +1,11 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
+ArrayList<Wall> walls = new ArrayList<Wall>();
 Player guy;
 void setup(){
   size(1200, 900);
   fill(255);
   stroke(0);
-  rooms(150,150,900, 600);
+  
   
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
@@ -14,9 +15,16 @@ void setup(){
 void draw(){
 
   //spawning(monsters);
-  fill(255, 0, 0);
+  fill(255);
+  stroke(0);
+  rooms(150,150,900, 600);
   
   for(Monster a : monsters){//if there is a monster there, redify
+    fill(255, 0, 0);
+    rect(a.getX(), a.getY(), 30, 30);
+  }
+  for(Wall a : walls){//if there is a wall there, greyify
+    fill(100);
     rect(a.getX(), a.getY(), 30, 30);
   }
   fill(0, 255, 0);
@@ -26,16 +34,17 @@ void draw(){
 }
   
 
-void rooms(int xpos, int ypos, int width1, int length1){
+void rooms(int xpos, int ypos, int width1, int length1){//can change this to be corners, atm it is top left coords, length, width
+//this fills in all whitespace
   for(int i = xpos; i < xpos+width1; i+=30){//establishes the grid system
     for(int j = ypos; j < ypos+length1; j+=30){
-      if(i == xpos || i == xpos+width1-30 || j == ypos || j == ypos+length1-30){
-        fill(100);
-        stroke(100);
+      if(i == xpos || i == xpos+width1-30 || j == ypos || j == ypos+length1-30){//is wall
+        Wall newWall = new Wall(i, j);
+        walls.add(newWall);
       }
-      rect(i, j, 30, 30);
       fill(255);
       stroke(0);
+      rect(i, j, 30, 30);//all white
     }
   }
   
@@ -81,4 +90,42 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
       break;
     }
   }
+}
+
+void keyPressed(){
+  
+  if(key == 119 || key == 87){//w or W, up
+    guy.move(0,-30);
+    for(Wall a : walls){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(0,30);
+      }
+    }
+    
+  }
+  if(key == 97 || key == 65){//a or A, left
+   guy.move(-30,0);
+   for(Wall a : walls){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(30,0);
+      }
+    }
+  }
+  if(key == 115 || key == 83){//s or S, down
+   guy.move(0,30);
+   for(Wall a : walls){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(0,-30);
+      }
+    }
+  }
+  if(key == 100 || key == 68){//d or D, right
+   guy.move(30,0);
+   for(Wall a : walls){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(-30,0);
+      }
+    }
+  }
+
 }

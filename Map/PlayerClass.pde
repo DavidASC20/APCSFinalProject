@@ -53,7 +53,11 @@ float[] attack(){
     temp[3] = Speed;
     return temp;
   }
- 
+
+void move(int x, int y){//x, y here should be only +30, -30(or whatever the square length ends up being
+  this.x+=x;
+  this.y+=y;
+}
 
  
     
@@ -70,5 +74,6 @@ float getX(){
 float getY(){
   return y;
 }
-  
+ 
+
 }
