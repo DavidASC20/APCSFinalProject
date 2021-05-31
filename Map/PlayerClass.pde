@@ -63,6 +63,12 @@ String equipItem(String equipment){
     return "You have equipped: " + item;
 }
 
-  
+float getX(){
+  return x;
+}
+
+float getY(){
+  return y;
+}
   
 }

@@ -1,4 +1,5 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
+Player guy;
 void setup(){
   size(1200, 900);
   fill(255);
@@ -6,6 +7,7 @@ void setup(){
   rooms(150,150,900, 600);
   
   randomSpawn(monsters, 150, 150, 900, 600, 30);
+  guy = new Player("name", 180, 180);
   
 }
 
@@ -17,6 +19,10 @@ void draw(){
   for(Monster a : monsters){//if there is a monster there, redify
     rect(a.getX(), a.getY(), 30, 30);
   }
+  fill(0, 255, 0);
+  rect(guy.getX(), guy.getY(), 30, 30);//player is green
+  fill(255);
+  
 }
   
 
