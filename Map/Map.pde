@@ -16,6 +16,7 @@ void draw(){
 
   //spawning(monsters);
   fill(255);
+  text(guy.getStats(), 0, 0);
   stroke(0);
   rooms(150,150,900, 600);
   

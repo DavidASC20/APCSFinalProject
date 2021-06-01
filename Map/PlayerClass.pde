@@ -6,6 +6,8 @@ public class Player{
   float mp;
   float speed; 
   String item;
+  float multiplier;
+  int killed;
   float x;
   float y;
   
@@ -23,11 +25,14 @@ Player(String playerName, float x, float y){
     mp = 15;
     speed = 5;
     name = playerName;
+    multiplier = 1.0;
+    killed = 0;
   }
   
  String getStats(){
-      return "Name: " + name +"\nHealth: " + health + "\nStrength: " + strength
-      + "\nLuck: " + luck + "\nMana Points: " + mp + "\nSpeed: " + speed + "\nItem: " + item; 
+      return "Name: " + name +"\nHealth: " + health * multiplier + "\nStrength: " + strength * multiplier
+      + "\nLuck: " + luck * multiplier + "\nMana Points: " + mp * multiplier + "\nSpeed: " + speed * multiplier+ "\nItem: " + item
+     + "\nMonsters Killed: " + killed; 
   }
   
 float[] attack(){
@@ -47,10 +52,10 @@ float[] attack(){
     }if(item.equals("Crystal")){
       mana += 3;
     }
-    temp[0] = attack;
-    temp[1] = hp;
-    temp[2] = mana;
-    temp[3] = Speed;
+    temp[0] = attack * multiplier;
+    temp[1] = hp * multiplier;
+    temp[2] = mana * multiplier;
+    temp[3] = Speed * multiplier;
     return temp;
   }
 
