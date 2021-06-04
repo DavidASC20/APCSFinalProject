@@ -6,8 +6,8 @@ public class Boss{
   int y;
   
   public Boss(int x, int y){
-     health = 1000;
-     strength = 75;
+     health = 250;
+     strength = 50;
      this.x=x;
      this.y=y;
   }

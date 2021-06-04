@@ -1,6 +1,7 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
 ArrayList<Wall> walls = new ArrayList<Wall>();
 Player guy;
+Boss boss;
 void setup(){
   size(1200, 900);
   fill(255);
@@ -10,6 +11,7 @@ void setup(){
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
   
+  boss = new Boss(990, 690);
 }
 
 void draw(){
@@ -30,14 +32,17 @@ void draw(){
   }
   fill(0, 255, 0);
   rect(guy.getX(), guy.getY(), 30, 30);//player is green
-  fill(255);
-  
+  fill(255, 0, 255);
+  rect(boss.getX(), boss.getY(), 30, 30);
+  fill(255, 0, 0);
   for(int i = 0; i < monsters.size(); i++){
     Monster mon = monsters.get(i);
     if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
       fight(mon, guy);
     }
-  }
+  }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
+      fight(boss, guy);
+    }
 }
   
 
@@ -117,8 +122,26 @@ void fight(Monster a, Player x){
       clear();
       text("You died", width / 2, height / 2);
     }
+   
   }
- 
+
+void fight(Boss a, Player x){
+  float [] statA = a.attack();
+  float [] statB = x.attack();
+  float ACSA = statA[0] + statA[1];
+  float ACSB = statA[0] + statB[1] + (.5 * statB[2]) + (.5 * statB[3]);
+  
+  if(ACSA < ACSB){
+    clear();
+    fill(0, 255, 0);
+    text("You win!", width/ 2, height / 2);
+  }else{
+    clear();
+    text("You died", width/ 2, height / 2);
+  }
+  
+  
+}
 
 
 
