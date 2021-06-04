@@ -105,7 +105,7 @@ void fight(Monster a, Player x){
   float ACSA = statA[0] + statA[1];
   float ACSB = statA[0] + statB[1] + (.5 * statB[2]) + (.5 * statB[3]);
   
-  if(ACSA > ACSB){
+  if(ACSA < ACSB){
     for(int i = 0; i < monsters.size(); i++){
       if(monsters.get(i).getX() == a.getX() && monsters.get(i).getY() == a.getY()){
         monsters.remove(i);

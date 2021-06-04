@@ -35,23 +35,23 @@ Player(String playerName, float x, float y){
      + "\nMonsters Killed: " + killed; 
   }
   
-float[] attack(){
+public float[] attack(){
     float [] temp = new float[4];
     float attack = strength;
     float hp = health;
     float mana = mp;
     float Speed = speed;
     
-    if(item.equals("Sword")){
-      attack += 2;
-    }
-    if(item.equals("Armor")){
-      hp += 20;
-    }if(item.equals("Boots")){
-      speed+= 1;
-    }if(item.equals("Crystal")){
-      mana += 3;
-    }
+    //if(item.equals("Sword")){
+    //  attack += 2;
+    //}
+    //if(item.equals("Armor")){
+    //  hp += 20;
+    //}if(item.equals("Boots")){
+    //  speed+= 1;
+    //}if(item.equals("Crystal")){
+    //  mana += 3;
+    //}
     temp[0] = attack * multiplier;
     temp[1] = hp * multiplier;
     temp[2] = mana * multiplier;
@@ -79,8 +79,9 @@ float getX(){
 float getY(){
   return y;
 }
-float kill(){
-  multiplier++;
+void kill(){
+  multiplier += 0.1;
+  killed++;
 }
  
 
