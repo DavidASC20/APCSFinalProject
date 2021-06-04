@@ -93,6 +93,25 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
   }
 }
 
+void fight(Monster a, Player x){
+  
+  
+  
+  
+}
+
+void fight(Boss a, Player x){
+  
+  
+  
+
+}
+  
+  
+  
+  
+}
+
 void keyPressed(){
   
   if(key == 119 || key == 87){//w or W, up
