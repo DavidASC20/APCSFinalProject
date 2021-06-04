@@ -1,4 +1,4 @@
-class Boss{
+public class Boss{
   
   float health;
   float strength;
@@ -12,7 +12,7 @@ class Boss{
      this.y=y;
   }
   
-  public float attack(){
+  public float strength(){
     return strength;
   }
   
@@ -28,10 +28,10 @@ class Boss{
     return y;
   }
   
-  float[] getStats {
+public float[] attack(){
     float[] temp = new float[2];
-    float[0] = attack;
-    float[1] = health;
+    temp[0] = strength;
+    temp[1] = health;
     
     return temp;
   }

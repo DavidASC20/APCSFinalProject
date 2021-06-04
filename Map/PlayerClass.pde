@@ -79,6 +79,9 @@ float getX(){
 float getY(){
   return y;
 }
+float kill(){
+  multiplier++;
+}
  
 
 }

@@ -32,6 +32,12 @@ void draw(){
   rect(guy.getX(), guy.getY(), 30, 30);//player is green
   fill(255);
   
+  for(int i = 0; i < monsters.size(); i++){
+    Monster mon = monsters.get(i);
+    if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
+      fight(mon, guy);
+    }
+  }
 }
   
 
@@ -94,23 +100,33 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
 }
 
 void fight(Monster a, Player x){
+  float [] statA = a.attack();
+  float [] statB = x.attack();
+  float ACSA = statA[0] + statA[1];
+  float ACSB = statA[0] + statB[1] + (.5 * statB[2]) + (.5 * statB[3]);
   
-  
-  
-  
-}
+  if(ACSA > ACSB){
+    for(int i = 0; i < monsters.size(); i++){
+      if(monsters.get(i).getX() == a.getX() && monsters.get(i).getY() == a.getY()){
+        monsters.remove(i);
+      }
+    }
+      x.kill();
+    }
+    else{
+      clear();
+      text("You died", width / 2, height / 2);
+    }
+  }
+ 
 
-void fight(Boss a, Player x){
+
+
+  
   
   
   
 
-}
-  
-  
-  
-  
-}
 
 void keyPressed(){
   

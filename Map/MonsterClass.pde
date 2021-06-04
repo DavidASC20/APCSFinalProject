@@ -1,9 +1,7 @@
-class Monster{
+public class Monster{
   
   float health;
   float strength;
-  float speed;
-  float luck;
   int x;
   int y;
   
@@ -14,7 +12,7 @@ class Monster{
      this.y=y;
   }
   
-  public float attack(){
+  public float strength(){
     return strength;
   }
   
@@ -28,6 +26,14 @@ class Monster{
   
   public int getY(){
     return y;
+  }
+  
+ public float[] attack(){
+    float[] temp = new float[2];
+    temp[0] = strength;
+    temp[1] = health;
+    
+    return temp;
   }
   
 }
