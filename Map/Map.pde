@@ -12,13 +12,13 @@ void setup(){
   guy = new Player("name", 180, 180);
   
   boss = new Boss(990, 690);
+  text(guy.getStats(), 0, 0);  
 }
 
 void draw(){
 
   //spawning(monsters);
   fill(255);
-  text(guy.getStats(), 0, 0);
   stroke(0);
   rooms(150,150,900, 600);
   
@@ -125,19 +125,15 @@ void fight(Monster a, Player x){
    
   }
 
-void fight(Boss a, Player x){
-  float [] statA = a.attack();
-  float [] statB = x.attack();
-  float ACSA = statA[0] + statA[1];
-  float ACSB = statA[0] + statB[1] + (.5 * statB[2]) + (.5 * statB[3]);
+void fight(Boss b, Player p){
+  float [] statP = p.attack();
+  float [] statB = b.attack();
+  float 
   
-  if(ACSA < ACSB){
-    clear();
-    fill(0, 255, 0);
-    text("You win!", width/ 2, height / 2);
-  }else{
-    clear();
-    text("You died", width/ 2, height / 2);
+  while(. >= 0 || p >= 0){
+    
+    
+    
   }
   
   

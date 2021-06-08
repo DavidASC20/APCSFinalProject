@@ -2,11 +2,12 @@ public class Boss{
   
   float health;
   float strength;
+  float speed;
   int x;
   int y;
   
   public Boss(int x, int y){
-     health = 250;
+     health = 500;
      strength = 50;
      this.x=x;
      this.y=y;
@@ -19,6 +20,10 @@ public class Boss{
   public float health(){
     return health;
   }
+ 
+  public float speed(){
+    return speed;
+  }
   
   public int getX(){
     return x;
@@ -26,14 +31,6 @@ public class Boss{
   
   public int getY(){
     return y;
-  }
-  
-public float[] attack(){
-    float[] temp = new float[2];
-    temp[0] = strength;
-    temp[1] = health;
-    
-    return temp;
   }
   
 }

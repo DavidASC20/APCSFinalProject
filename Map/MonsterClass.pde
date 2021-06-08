@@ -2,12 +2,14 @@ public class Monster{
   
   float health;
   float strength;
+  float speed;
   int x;
   int y;
   
   public Monster(int x, int y){
      health = 100;
      strength = 5;
+     speed = 4;
      this.x=x;
      this.y=y;
   }
@@ -20,6 +22,9 @@ public class Monster{
     return health;
   }
   
+  public float speed(){
+    return speed;
+  }
   public int getX(){
     return x;
   }
@@ -28,12 +33,6 @@ public class Monster{
     return y;
   }
   
- public float[] attack(){
-    float[] temp = new float[2];
-    temp[0] = strength;
-    temp[1] = health;
-    
-    return temp;
-  }
+ 
   
 }
