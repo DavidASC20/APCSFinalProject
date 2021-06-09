@@ -6,22 +6,25 @@ void setup(){
   size(1200, 900);
   fill(255);
   stroke(0);
-  
+ 
   
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
-  
-  boss = new Boss(990, 690);
-  text(guy.getStats(), 0, 0);  
+  boss = new Boss(990, 690); 
+}
+
+void display(){
+  text(guy.getStats(), 0, 0); 
 }
 
 void draw(){
-
+  background(0);
+  display();
   //spawning(monsters);
   fill(255);
   stroke(0);
   rooms(150,150,900, 600);
-  
+  display();
   for(Monster a : monsters){//if there is a monster there, redify
     fill(255, 0, 0);
     rect(a.getX(), a.getY(), 30, 30);
@@ -104,7 +107,9 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
   }
 }
 
-void fight(Monster b, Player p){
+
+  
+  void fight(Monster b, Player p){
   float PlayerHealth = p.health();
   float PlayerStrength = p.strength();
   float PlayerSpeed = p.speed();
@@ -126,12 +131,18 @@ void fight(Monster b, Player p){
     }
     
     
-  }
-  if(PlayerHealth > 0){
-    clear();
-    text("You beat the game!", width / 2 + 20, height / 2);
-  }clear();
-  text("You died, try again", width / 2 + 20, height / 2);
+  }if(PlayerHealth > MonsterHealth){
+    for(int i = 0; i < monsters.size(); i++){
+      if(monsters.get(i).getX() == b.getX() && monsters.get(i).getY() == b.getY()){
+        monsters.remove(i);
+      }
+    }
+      p.kill();
+    }
+    else{
+      clear();
+      text("You died", width / 2, height / 2);
+    }
 }
 
 void fight(Boss b, Player p){

@@ -30,8 +30,8 @@ Player(String playerName, float x, float y){
   }
   
  String getStats(){
-      return "Name: " + name +"\nHealth: " + health * multiplier + "\nStrength: " + strength * multiplier
-      + "\nLuck: " + luck * multiplier + "\nMana Points: " + mp * multiplier + "\nSpeed: " + speed * multiplier+ "\nItem: " + item
+      return "Name: " + name +"\nHealth: " + multiply(health) + "\nStrength: " + multiply(strength)
+      + "\nLuck: " + multiply(luck) + "\nMana Points: " + multiply(mp) + "\nSpeed: " + multiply(speed)+ "\nItem: " + item
      + "\nMonsters Killed: " + killed; 
   }
   
@@ -57,7 +57,9 @@ void move(int x, int y){//x, y here should be only +30, -30(or whatever the squa
 }
 
  
-    
+float multiply(float x){
+  return Math.round(multiplier * x);
+}
     
 String equipItem(String equipment){
     item = equipment;
