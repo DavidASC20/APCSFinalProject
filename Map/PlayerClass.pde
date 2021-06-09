@@ -3,7 +3,7 @@ public class Player{
   float health;
   float strength;
   float luck;
-  float mp;
+  int mp;
   float speed; 
   String item;
   float multiplier;
@@ -47,7 +47,9 @@ public float speed(){
   return speed;
 }
 
-publ
+public int mp(){
+  return mp;
+}
 
 void move(int x, int y){//x, y here should be only +30, -30(or whatever the square length ends up being
   this.x+=x;

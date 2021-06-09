@@ -104,39 +104,64 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
   }
 }
 
-void fight(Monster a, Player x){
-  float [] statA = a.attack();
-  float [] statB = x.attack();
-  float ACSA = statA[0] + statA[1];
-  float ACSB = statA[0] + statB[1] + (.5 * statB[2]) + (.5 * statB[3]);
+void fight(Monster b, Player p){
+  float PlayerHealth = p.health();
+  float PlayerStrength = p.strength();
+  float PlayerSpeed = p.speed();
+  float MonsterHealth = b.health();
+  float MonsterStrength = b.strength();
+  float MonsterSpeed = b.speed();
   
-  if(ACSA < ACSB){
-    for(int i = 0; i < monsters.size(); i++){
-      if(monsters.get(i).getX() == a.getX() && monsters.get(i).getY() == a.getY()){
-        monsters.remove(i);
-      }
+  while(PlayerHealth >= 0 || MonsterHealth >= 0){
+    if(PlayerSpeed > MonsterSpeed){
+      MonsterHealth -= PlayerStrength;
+      if(MonsterHealth <= 0){
+        break;
+      }PlayerHealth -= MonsterStrength;
+    }else{
+      PlayerHealth -= MonsterStrength;
+      if(PlayerHealth <= 0){
+        break;
+      }MonsterHealth -= PlayerStrength;
     }
-      x.kill();
-    }
-    else{
-      clear();
-      text("You died", width / 2, height / 2);
-    }
-   
+    
+    
   }
+  if(PlayerHealth > 0){
+    clear();
+    text("You beat the game!", width / 2 + 20, height / 2);
+  }clear();
+  text("You died, try again", width / 2 + 20, height / 2);
+}
 
 void fight(Boss b, Player p){
-  float [] statP = p.attack();
-  float [] statB = b.attack();
-  float 
+  float PlayerHealth = p.health();
+  float PlayerStrength = p.strength();
+  float PlayerSpeed = p.speed();
+  float BossHealth = b.health();
+  float BossStrength = b.strength();
+  float BossSpeed = b.speed();
   
-  while(. >= 0 || p >= 0){
-    
+  while(PlayerHealth >= 0 || BossHealth >= 0){
+    if(PlayerSpeed > BossSpeed){
+      BossHealth -= PlayerStrength;
+      if(BossHealth <= 0){
+        break;
+      }PlayerHealth -= BossStrength;
+    }else{
+      PlayerHealth -= BossStrength;
+      if(PlayerHealth <= 0){
+        break;
+      }BossHealth -= PlayerStrength;
+    }
     
     
   }
-  
-  
+  if(PlayerHealth > 0){
+    clear();
+    text("You beat the game!", width / 2 + 20, height / 2);
+  }clear();
+  text("You died, try again", width / 2 + 20, height / 2);
 }
 
 
