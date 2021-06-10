@@ -14,17 +14,24 @@ public class Button{
     if(use.equals("Attack")){
       //fighting
     }
-    if(use.equals("Play")){
+    if(scene.equals("Title") && use.equals("Play")){
       scene = "Game";
+      println("pressed playButton");
     }
     if(use.equals("Settings")){
       scene = "Settings";
     }
     if(use.equals("Restart")){
      scene = "Game";
+     println("pressed restartButton");
     }
-    if(use.equals("Instructions")){
+    if(scene.equals("Title") && use.equals("Instructions")){
       scene = "Instructions";
+      println("pressed instruction");
+    }
+    if(scene.equals("Instructions") && use.equals("back to title")){
+      scene = "Title";
+      println("pressed titleButton");
     }
   }
   
