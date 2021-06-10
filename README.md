@@ -13,6 +13,7 @@ David
 5/29 - Worked on movement(up, down, left, right), wasn't able to get actual movement working.
 6/1 - Changed variables to include a leveling system with a multiplier in stats, and removed the tester while showing stats to the top of the screen.
 6/3 - Added basic killing method and way to beat the game, added boss file and boss into the game with balance fixes to make the game possible.
+6/8 - Tweaked fighting so that it actually took stats into account, fixed buggy text showing stats on top, and changed color of background to black.
 
 Ryan
 5/26 - Worked on monster class, finished constructor, attack methods, added hp and damage instance variables
