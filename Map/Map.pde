@@ -2,11 +2,13 @@ ArrayList<Monster> monsters = new ArrayList<Monster>();
 ArrayList<Wall> walls = new ArrayList<Wall>();
 Player guy;
 Boss boss;
+String scene;
 void setup(){
   size(1200, 900);
   fill(255);
   stroke(0);
- 
+  scene = "Title";
+  scene = "Game";
   
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
@@ -18,34 +20,38 @@ void display(){
 }
 
 void draw(){
-  background(0);
-  display();
-  //spawning(monsters);
-  fill(255);
-  stroke(0);
-  rooms(150,150,900, 600);
-  display();
-  for(Monster a : monsters){//if there is a monster there, redify
+  
+  
+  if(scene.equals("Game")){
+    background(0);
+    display();
+    //spawning(monsters);
+    fill(255);
+    stroke(0);
+    rooms(150,150,900, 600);
+    display();
+    for(Monster a : monsters){//if there is a monster there, redify
+      fill(255, 0, 0);
+      rect(a.getX(), a.getY(), 30, 30);
+    }
+    for(Wall a : walls){//if there is a wall there, greyify
+      fill(100);
+      rect(a.getX(), a.getY(), 30, 30);
+    }
+    fill(0, 255, 0);
+    rect(guy.getX(), guy.getY(), 30, 30);//player is green
+    fill(255, 0, 255);
+    rect(boss.getX(), boss.getY(), 30, 30);
     fill(255, 0, 0);
-    rect(a.getX(), a.getY(), 30, 30);
+    for(int i = 0; i < monsters.size(); i++){
+      Monster mon = monsters.get(i);
+      if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
+        fight(mon, guy);
+      }
+    }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
+        fight(boss, guy);
+      }
   }
-  for(Wall a : walls){//if there is a wall there, greyify
-    fill(100);
-    rect(a.getX(), a.getY(), 30, 30);
-  }
-  fill(0, 255, 0);
-  rect(guy.getX(), guy.getY(), 30, 30);//player is green
-  fill(255, 0, 255);
-  rect(boss.getX(), boss.getY(), 30, 30);
-  fill(255, 0, 0);
-  for(int i = 0; i < monsters.size(); i++){
-    Monster mon = monsters.get(i);
-    if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
-      fight(mon, guy);
-    }
-  }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
-      fight(boss, guy);
-    }
 }
   
 
