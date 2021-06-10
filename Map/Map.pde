@@ -8,7 +8,7 @@ void setup(){
   fill(255);
   stroke(0);
   scene = "Title";
-  scene = "Game";
+  //scene = "Game";
   
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
@@ -20,7 +20,13 @@ void display(){
 }
 
 void draw(){
-  
+  if(scene.equals("Title")){
+    background(255);
+    Button playButton = new Button("Play");
+    playButton.show(width/2, height/2, 200, 100);
+    println("Title");
+  }
+    
   
   if(scene.equals("Game")){
     background(0);
@@ -92,7 +98,6 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
     //*30 after the above translates it back into processing grid numbers so it gets drawn right
     //the +roomX translates it into the room number
     int y = (int)(Math.random()*((roomHeight/30)-2))*30+roomY+30;
-    println(x + " " + y);
     Monster create = new Monster(x, y);
     for(Monster a : monsters){//check if its on top of an already spawned monster
       if(create.getX()==a.getX() && create.getY()==a.getY()){
