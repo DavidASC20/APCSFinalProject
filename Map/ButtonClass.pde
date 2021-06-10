@@ -1,9 +1,13 @@
 public class Button{
   String use;
   int x, y;
-  
-  public Button(String u){
+  int howLong, howHigh;
+  public Button(String u, int x, int y, int howLong, int howHigh){
     use = u;
+    this.x = x;
+    this.y = y;
+    this.howLong = howLong;
+    this.howHigh = howHigh;
   }
   
   void pressed(){
@@ -11,23 +15,36 @@ public class Button{
       //fighting
     }
     if(use.equals("Play")){
-      //title screen
+      scene = "Game";
     }
     if(use.equals("Settings")){
-      //something?
+      scene = "Settings";
     }
     if(use.equals("Restart")){
-     //do setup again 
+     scene = "Game";
+    }
+    if(use.equals("Instructions")){
+      scene = "Instructions";
     }
   }
   
-  void show(int x, int y, int howLong, int howHigh){
+  void show(){
     fill(100);
     stroke(128, 15, 6);
-    rect(x-(howLong/2), y-(howHigh/2), howLong, howHigh, 15);
+    rect(x, y, howLong, howHigh, 15);
     fill(255);
     textSize(32);
-    text(use, x, y);
+    textAlign(CENTER, CENTER);
+    text(use, x+(howLong/2), y+(howHigh/2));
   }
   
+  boolean hover(){
+    if (mouseX >= x && mouseX <= x+howLong && 
+        mouseY >= y && mouseY <= y+howHigh) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
+  

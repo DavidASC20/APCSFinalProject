@@ -1,5 +1,6 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
 ArrayList<Wall> walls = new ArrayList<Wall>();
+ArrayList<Button> buttons = new ArrayList<Button>();
 Player guy;
 Boss boss;
 String scene;
@@ -16,15 +17,20 @@ void setup(){
 }
 
 void display(){
+  textSize(12);
+  textAlign(LEFT);
   text(guy.getStats(), 0, 0); 
 }
 
 void draw(){
   if(scene.equals("Title")){
     background(255);
-    Button playButton = new Button("Play");
-    playButton.show(width/2, height/2, 200, 100);
-    println("Title");
+    Button playButton = new Button("Play", width/2-100, height/2-100, 200, 100);
+    Button instructionsButton = new Button("Instructions", width/2-100, height/2+50, 200, 100);
+    buttons.add(playButton);
+    buttons.add(instructionsButton);
+    playButton.show();
+    instructionsButton.show();
   }
     
   
@@ -230,4 +236,12 @@ void keyPressed(){
     }
   }
 
+}
+
+void mousePressed(){
+  for(Button a : buttons){
+    if(a.hover()){
+      a.pressed();
+    }
+  }
 }
