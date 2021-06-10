@@ -64,6 +64,14 @@ void draw(){
         fight(boss, guy);
       }
   }
+  
+  if(scene.equals("Instructions")){
+    background(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    fill(0);
+    text("Move with WASD \n Run into monsters to fight them \n Don't die lol", width/2, height/2);
+  }
 }
   
 
