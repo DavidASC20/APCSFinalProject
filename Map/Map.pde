@@ -141,7 +141,7 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
     }
     else{
       clear();
-      text("You died", width / 2, height / 2);
+      text("You died, Try Again", width / 2, height / 2);
     }
 }
 
@@ -170,9 +170,9 @@ void fight(Boss b, Player p){
   }
   if(PlayerHealth > 0){
     clear();
-    text("You beat the game!", width / 2 + 20, height / 2);
+    text("You beat the game!", width / 2 - 40, height / 2);
   }clear();
-  text("You died, try again", width / 2 + 20, height / 2);
+  text("You died, Try Again", width / 2 - 40, height / 2);
 }
 
 
