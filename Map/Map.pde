@@ -29,7 +29,7 @@ void fightDisplay(float[] x){
   fill(100, 255, 0);
   text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 250, 400);
   fill(255, 0, 0);
-  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 1000, 400);
+  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 900, 400);
 }
 
 void draw(){
@@ -157,6 +157,7 @@ void draw(){
       }
     }
       guy.kill();
+      scene = "Game";
     }
     else{
       //clear();
