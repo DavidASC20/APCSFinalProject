@@ -1,12 +1,10 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
 ArrayList<Wall> walls = new ArrayList<Wall>();
 ArrayList<Button> buttons = new ArrayList<Button>();
-PImage wall;
 Player guy;
 Boss boss;
 Monster chosen;
 String scene;
-double image;
 void setup(){
   size(1200, 900);
   fill(255);
@@ -17,9 +15,6 @@ void setup(){
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
   boss = new Boss(990, 690); 
-  wall = loadImage("wall1.gif");
-  wall.resize(30,30);
-  
 }
 
 void display(){
@@ -68,12 +63,8 @@ void draw(){
         
     }
     for(Wall a : walls){//if there is a wall there, greyify
-      //fill(100);
-      //rect(a.getX(), a.getY(), 30, 30);
-      image(wall, a.getX(), a.getY());
-      
-      
-      
+      fill(100);
+      rect(a.getX(), a.getY(), 30, 30);
     }
     fill(0, 255, 0);
     rect(guy.getX(), guy.getY(), 30, 30);//player is green
@@ -89,7 +80,7 @@ void draw(){
       Monster mon = monsters.get(i);
       if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
         chosen = mon;
-        scene = "Fight";
+        scene = "Fight";///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////MARKER
       }
     }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
         fight(boss, guy);
@@ -306,6 +297,13 @@ void keyPressed(){
    for(Wall a : walls){
       if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
         guy.move(30,0);
+      }
+    }
+  }
+  for(Monster a : monsters){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(30,0);
+        //start encounter
       }
     }
   }
