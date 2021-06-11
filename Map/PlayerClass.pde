@@ -1,6 +1,7 @@
 public class Player{
   String name;
   float health;
+  float speed;
   float strength;
   float multiplier;
   int killed;
@@ -19,6 +20,7 @@ Player(String playerName, float x, float y){
     fill(0);
     health = 100;
     strength = 10; 
+    speed = 5;
     name = playerName;
     multiplier = 1.0;
     killed = 0;
@@ -42,8 +44,8 @@ void setCostume(int which){
 }
   
  String getStats(){
-      return "Name: " + name +"\nHealth: " + multiply(health) + "\nStrength: " + multiply(strength)
-      +  "\nMonsters Killed: " + killed; 
+      return "Name: " + name +"\nHealth: " + multiply(health) + "\nStrength: " + multiply(strength) + "\n Speed: " + speed +
+        "\nMonsters Killed: " + killed; 
   }
   
 public float health(){
@@ -53,6 +55,12 @@ public float health(){
 public float strength(){
   return strength * multiplier;
 }
+
+public float speed(){
+  return speed;
+}
+
+
 
 void move(int x, int y){//x, y here should be only +30, -30(or whatever the square length ends up being
   this.x+=x;
