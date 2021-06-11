@@ -93,7 +93,7 @@ void draw(){
     textSize(20);
     fill(0);
     text("Move with WASD \n Run into monsters to fight them \n Don't die lol", width/2, height/2);
-    Button titleButton = new Button("Back to Title", width/2-100, height/2+100, 200, 100);
+    Button titleButton = new Button("back to title", width/2-100, height/2+100, 200, 100);
     buttons.add(titleButton);
     titleButton.show();
   }
@@ -123,7 +123,7 @@ void draw(){
   if(scene.equals("Fight")){
     background(190);
     Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
-    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);
+    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);////////////////////////////////////MARKER
     buttons.add(attackButton);
     buttons.add(backButton);
     attackButton.show();
@@ -315,6 +315,9 @@ void keyPressed(){
         guy.move(-30,0);
       }
     }
+  }
+  if(key == ' '){
+    println(scene);
   }
 
 }
