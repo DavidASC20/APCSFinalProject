@@ -4,6 +4,7 @@ ArrayList<Button> buttons = new ArrayList<Button>();
 Player guy;
 Boss boss;
 String scene;
+double image;
 void setup(){
   size(1200, 900);
   fill(255);
@@ -53,8 +54,13 @@ void draw(){
         
     }
     for(Wall a : walls){//if there is a wall there, greyify
-      fill(100);
-      rect(a.getX(), a.getY(), 30, 30);
+      //fill(100);
+      //rect(a.getX(), a.getY(), 30, 30);
+      PImage photo = loadImage("terrainHazardLava.gif");
+      photo.resize(30,30);
+      image(photo, a.getX(), a.getY());
+      
+      
     }
     fill(0, 255, 0);
     rect(guy.getX(), guy.getY(), 30, 30);//player is green
