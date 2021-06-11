@@ -11,6 +11,7 @@ public class Boss{
      strength = 50;
      this.x=x;
      this.y=y;
+     println(health + " " + strength);
   }
   
   public float strength(){

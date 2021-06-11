@@ -77,17 +77,24 @@ void draw(){
   }
   
   if(scene.equals("Lose")){
-    text("You died, Try Again", width / 2 - 40, height / 2);
     background(0);
-    Button restart = new Button("back to title", width/2-100, height/2+100, 200, 100);
+    stroke(255);
+    textSize(100);
+    text("You died, Try Again", width / 2 - 40, (height / 2)-50);
+    
+    
+    Button restart = new Button("back to title", width/2-100, height/2+50, 200, 100);
     buttons.add(restart);
     restart.show();
   }
   
   if(scene.equals("Win")){
-    stroke(255,0,0);
     background(0);
+    stroke(255);
     text("You beat the game!", width / 2 - 40, height / 2);
+    Button restart = new Button("back to title", width/2-100, height/2+50, 200, 100);
+    buttons.add(restart);
+    restart.show();
     
   }
 }
@@ -183,8 +190,9 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
       p.kill();
     }
     else{
-      clear();
-      text("You died, Try Again", width / 2, height / 2);
+      //clear();
+      //text("You died, Try Again", width / 2, height / 2);
+      scene = "Lose";
     }
 }
 
@@ -215,7 +223,10 @@ void fight(Boss b, Player p){
     //clear();
     //text("You beat the game!", width / 2 - 40, height / 2);
     scene = "Win";
-  }scene = "Lose";//clear();
+  }
+  else{
+    scene = "Lose";
+  }//clear();
   //text("You died, Try Again", width / 2 - 40, height / 2);
   
 }
