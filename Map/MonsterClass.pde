@@ -11,6 +11,17 @@ public class Monster{
      health = 100;
      strength = 5;
      speed = 4;
+     double random = Math.random();
+     if(random >= 0.5 && random < 0.8){
+       health *=2;
+       strength *=2;
+       speed *=2;
+     }
+      if(random >= 0.8){
+        health *=3;
+        strength *=3;
+        speed *=3;
+      }
      this.x=x;
      this.y=y;
   }

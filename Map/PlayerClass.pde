@@ -20,7 +20,7 @@ Player(String playerName, float x, float y){
     rect(x, y, 10, 10);
     fill(0);
     health = 100;
-    strength = 20; 
+    strength = 10; 
     luck = 5;
     mp = 15;
     speed = 5;

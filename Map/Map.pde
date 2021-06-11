@@ -3,6 +3,7 @@ ArrayList<Wall> walls = new ArrayList<Wall>();
 ArrayList<Button> buttons = new ArrayList<Button>();
 Player guy;
 Boss boss;
+Monster chosen;
 String scene;
 void setup(){
   size(1200, 900);
@@ -69,7 +70,7 @@ void draw(){
     for(int i = 0; i < monsters.size(); i++){
       Monster mon = monsters.get(i);
       if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
-        fight(mon, guy);
+        chosen = mon;
       }
     }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
         fight(boss, guy);
@@ -111,6 +112,12 @@ void draw(){
   
   if(scene.equals("Fight")){
     background(190);
+    Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
+    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);
+    buttons.add(playButton);
+    buttons.add(instructionsButton);
+    playButton.show();
+    instructionsButton.show();
   }
 }
   
