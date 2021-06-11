@@ -11,9 +11,6 @@ public class Button{
   }
   
   void pressed(){
-    if(use.equals("Attack")){
-      //fighting
-    }
     if(scene.equals("Title") && use.equals("Play")){
       scene = "Game";
       println("pressed playButton");
