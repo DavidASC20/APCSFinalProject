@@ -23,10 +23,7 @@ David
 Ryan
 5/26 - Worked on monster class, finished constructor, attack methods, added hp and damage instance variables
 5/28 - Worked on UML chart
-5/30 - Worked on map file
-- spawning monsters (random+nonrandom)
-- creating rooms(nonrandom)
-- spawning player(topleft)
+5/30 - Worked on map file - spawning monsters (random+nonrandom), creating rooms(nonrandom), spawning player(topleft)
 Added getX(), getY() to playerClass
 5/31 - Completed WASD 4 direction player movement
 Added wall collisions, used Wall object to implement that
