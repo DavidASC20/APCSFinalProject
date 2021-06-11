@@ -45,6 +45,12 @@ void draw(){
     for(Monster a : monsters){//if there is a monster there, redify
       fill(255, 0, 0);
       rect(a.getX(), a.getY(), 30, 30);
+      if(a.hover()){
+        textSize(12);
+        textAlign(RIGHT);
+        text(a.getStats(), 1195, 15); 
+      }
+        
     }
     for(Wall a : walls){//if there is a wall there, greyify
       fill(100);
@@ -54,6 +60,11 @@ void draw(){
     rect(guy.getX(), guy.getY(), 30, 30);//player is green
     fill(255, 0, 255);
     rect(boss.getX(), boss.getY(), 30, 30);
+    if(boss.hover()){
+        textSize(12);
+        textAlign(RIGHT);
+        text(boss.getStats(), 1195, 15); 
+      }
     fill(255, 0, 0);
     for(int i = 0; i < monsters.size(); i++){
       Monster mon = monsters.get(i);

@@ -1,5 +1,5 @@
 public class Monster{
-  
+  String monsterType;
   float health;
   float strength;
   float speed;
@@ -7,6 +7,7 @@ public class Monster{
   int y;
   
   public Monster(int x, int y){
+     monsterType = "Monster";
      health = 100;
      strength = 5;
      speed = 4;
@@ -33,6 +34,16 @@ public class Monster{
     return y;
   }
   
- 
+  boolean hover(){
+    if (mouseX >= x && mouseX <= x+30 && 
+        mouseY >= y && mouseY <= y+30) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   
+  String getStats(){
+    return "Name: " + monsterType +"\nHealth: " + health + "\nStrength: " + strength + "\nSpeed: " + speed; 
+  }
 }
