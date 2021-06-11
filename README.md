@@ -21,12 +21,11 @@ David
 6/8 - Tweaked fighting so that it actually took stats into account, fixed buggy text showing stats on top, and changed color of background to black.
 
 Ryan
-5/26 - Worked on monster class, finished constructor, attack methods, added hp and damage instance variables
-5/28 - Worked on UML chart
-5/30 - Worked on map file - spawning monsters (random+nonrandom), creating rooms(nonrandom), spawning player(topleft)
-Added getX(), getY() to playerClass
-5/31 - Completed WASD 4 direction player movement
-Added wall collisions, used Wall object to implement that
-6/3 - Worked on revamped UML, up to demo completion(version 2)
-6/10 - Upgraded game graphics(added costume instance variables), added monster hover text, and a few bug fixes
-- Fixed issue where monsters wouldn't die after player died
+  5/26 - Worked on monster class, finished constructor, attack methods, added hp and damage instance variables
+  5/28 - Worked on UML chart
+  5/30 - Worked on map file - spawning monsters (random+nonrandom), creating rooms(nonrandom), spawning player(topleft)
+  Added getX(), getY() to playerClass
+  5/31 - Completed WASD 4 direction player movement
+  Added wall collisions, used Wall object to implement that
+  6/3 - Worked on revamped UML, up to demo completion(version 2)
+  6/10 - Upgraded game graphics(added costume instance variables), added monster hover text, and fixed issue where monsters wouldn't die after player died
