@@ -7,6 +7,10 @@ Our project will be based in Processing. Players will be able to choose from a l
 
 https://docs.google.com/document/d/1B6UmmZ-1cbZQkB-R8fPpalU-H5n-O8KPie_kVC5-SDc/edit?usp=sharing
 
+To Run:
+cd into Map/
+open Map.pde and run (in processing)
+
 Daily Chart
 David
 5/26 - Worked on player class, finished constructor, getStats method.
