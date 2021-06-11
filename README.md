@@ -28,7 +28,7 @@ Ryan
 - creating rooms(nonrandom)
 - spawning player(topleft)
 Added getX(), getY() to playerClass
-5/31 - Completed WASD 4 direction player movement
+\n\n\n\n5/31 - Completed WASD 4 direction player movement
 Added wall collisions, used Wall object to implement that
 6/3 - Worked on revamped UML, up to demo completion(version 2)
 6/10 - Upgraded game graphics(added costume instance variables), added monster hover text, and a few bug fixes
