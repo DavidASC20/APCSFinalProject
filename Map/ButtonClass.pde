@@ -26,7 +26,7 @@ public class Button{
     if(scene.equals("Instructions")&& use.equals("back to title")){
       scene = "Title";
     }
-    if(scene.equals("Lose") && use.equals("back to title")){
+    if(scene.equals("Lose")||scene.equals("Win") && use.equals("back to title")){
       scene = "Title";
       randomSpawn(monsters, 150, 150, 900, 600, 30);
       guy = new Player("name", 180, 180);

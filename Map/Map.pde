@@ -7,13 +7,15 @@ Boss boss;
 Monster chosen;
 String scene;
 double image;
+PImage titleScreen;
 void setup(){
   size(1200, 900);
   fill(255);
   stroke(0);
   scene = "Title";
   //scene = "Game";
-  
+  titleScreen = loadImage("titleScreen.jpg");
+  titleScreen.resize(1200,900);
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
   boss = new Boss(990, 690); 
@@ -40,6 +42,7 @@ void fightDisplay(float[] x){
 void draw(){
   if(scene.equals("Title")){
     background(255);
+    image(titleScreen, 0, 0);
     Button playButton = new Button("Play", width/2-100, height/2-100, 200, 100);
     Button instructionsButton = new Button("Instructions", width/2-100, height/2+50, 200, 100);
     buttons.add(playButton);
@@ -100,10 +103,10 @@ void draw(){
   }
   
   if(scene.equals("Instructions")){
-    background(255);
+    background(100,0,2);
     textAlign(CENTER, CENTER);
     textSize(20);
-    fill(0);
+    fill(255);
     text("Move with WASD \n Run into monsters to fight them \n Hover over monsters to view their stats \n Some monsters are stronger than others! Fight your way to the boss and beat him", width/2, height/2);
     Button titleButton = new Button("back to title", width/2-100, height/2+100, 200, 100);
     buttons.add(titleButton);

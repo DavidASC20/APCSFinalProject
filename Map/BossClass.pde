@@ -42,8 +42,8 @@ public class Boss{
   }
   
   boolean hover(){
-    if (mouseX >= x && mouseX <= x+30 && 
-        mouseY >= y && mouseY <= y+30) {
+    if (mouseX >= x && mouseX <= x+60 && 
+        mouseY >= y && mouseY <= y+60) {
       return true;
     } else {
       return false;
