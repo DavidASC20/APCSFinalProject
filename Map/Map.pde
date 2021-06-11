@@ -32,9 +32,9 @@ void fightDisplay(float[] x){
   textSize(30);
   textAlign(CENTER);
   fill(100, 255, 0);
-  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 250, 200);
+  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 250, 400);
   fill(255, 0, 0);
-  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 1000, 200);
+  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 900, 400);
 }
 
 void draw(){
@@ -131,14 +131,8 @@ void draw(){
   
   if(scene.equals("Fight")){
     background(190);
-    Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
-    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);////////////////////////////////////MARKER
-    buttons.add(attackButton);
-    buttons.add(backButton);
-    attackButton.show();
-    backButton.show();
     
-    
+  
   float PlayerHealth = guy.health();
   float PlayerStrength = guy.strength();
   float PlayerSpeed = guy.speed();
@@ -147,6 +141,38 @@ void draw(){
   float MonSpeed = chosen.speed();
   float[] together = {PlayerHealth, PlayerStrength, PlayerSpeed, MonHealth, MonStrength, MonSpeed};
   fightDisplay(together);
+  
+  while(PlayerHealth > 0 && MonHealth > 0){
+     if(PlayerSpeed > MonSpeed){
+      MonHealth -= PlayerStrength;
+      if(MonHealth <= 0){
+        break;
+      }else{
+        PlayerHealth -= MonStrength;
+      }
+    }else{
+      PlayerHealth -= MonStrength;
+      if(PlayerHealth <= 0){
+        break;
+      }else{
+        MonHealth -= PlayerStrength;
+      }
+    }
+    
+  }if(PlayerHealth > MonHealth){
+    for(int i = 0; i < monsters.size(); i++){
+      if(monsters.get(i).getX() == chosen.getX() && monsters.get(i).getY() == chosen.getY()){
+        monsters.remove(i);
+      }
+    }
+      guy.kill();
+      scene = "Game";
+    }
+    else{
+      //clear();
+      //text("You died, Try Again", width / 2, height / 2);
+      scene = "Lose";
+    }
   }
 }
   
@@ -206,45 +232,6 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
       break;
     }
   }
-}
-
-
-  
-  void fight(Monster b, Player p){
-  float PlayerHealth = p.health();
-  float PlayerStrength = p.strength();
-  float PlayerSpeed = p.speed();
-  float MonsterHealth = b.health();
-  float MonsterStrength = b.strength();
-  float MonsterSpeed = b.speed();
-  
-  while(PlayerHealth >= 0 || MonsterHealth >= 0){
-    if(PlayerSpeed > MonsterSpeed){
-      MonsterHealth -= PlayerStrength;
-      if(MonsterHealth <= 0){
-        break;
-      }PlayerHealth -= MonsterStrength;
-    }else{
-      PlayerHealth -= MonsterStrength;
-      if(PlayerHealth <= 0){
-        break;
-      }MonsterHealth -= PlayerStrength;
-    }
-    
-    
-  }if(PlayerHealth > MonsterHealth){
-    for(int i = 0; i < monsters.size(); i++){
-      if(monsters.get(i).getX() == b.getX() && monsters.get(i).getY() == b.getY()){
-        monsters.remove(i);
-      }
-    }
-      p.kill();
-    }
-    else{
-      //clear();
-      //text("You died, Try Again", width / 2, height / 2);
-      scene = "Lose";
-    }
 }
 
 void fight(Boss b, Player p){
