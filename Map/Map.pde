@@ -23,6 +23,13 @@ void display(){
   text(guy.getStats(), 0, 0); 
 }
 
+void fightDisplay(float[] x){
+  textSize(12);
+  textAlign(LEFT);
+  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 50, 0);
+  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 50, 800);
+}
+
 void draw(){
   if(scene.equals("Title")){
     background(255);
@@ -71,6 +78,7 @@ void draw(){
       Monster mon = monsters.get(i);
       if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
         chosen = mon;
+        scene = "Fight";
       }
     }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
         fight(boss, guy);
@@ -114,10 +122,20 @@ void draw(){
     background(190);
     Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
     Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);
-    buttons.add(playButton);
-    buttons.add(instructionsButton);
-    playButton.show();
-    instructionsButton.show();
+    buttons.add(attackButton);
+    buttons.add(backButton);
+    attackButton.show();
+    backButton.show();
+    
+    
+  float PlayerHealth = guy.health();
+  float PlayerStrength = guy.strength();
+  float PlayerSpeed = guy.speed();
+  float MonHealth = chosen.health();
+  float MonStrength = chosen.strength();
+  float MonSpeed = chosen.speed();
+  float[] together = {PlayerHealth, PlayerStrength, PlayerSpeed, MonHealth, MonStrength, MonSpeed};
+  fightDisplay(together);
   }
 }
   
