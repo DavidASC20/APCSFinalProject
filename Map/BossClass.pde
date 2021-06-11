@@ -5,16 +5,22 @@ public class Boss{
   float speed;
   int x;
   int y;
+  PImage costume;
   
   public Boss(int x, int y){
     monsterType = "Boss";
      health = 500;
      strength = 50;
-     this.x=x;
-     this.y=y;
-     println(health + " " + strength);
+     this.x=x-30;
+     this.y=y-30;
+     costume = loadImage("scaryBoss.png");
+     costume.resize(60,60);
   }
   
+  PImage getCostume(){
+    return costume;
+  }
+    
   public float strength(){
     return strength;
   }

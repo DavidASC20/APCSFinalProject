@@ -59,7 +59,7 @@ void draw(){
     display();
     for(Monster a : monsters){//if there is a monster there, redify
       fill(255, 0, 0);
-      rect(a.getX(), a.getY(), 30, 30);
+      image(a.getCostume(), a.getX(), a.getY()-20);
       if(a.hover()){
         textSize(12);
         textAlign(RIGHT);
@@ -80,7 +80,8 @@ void draw(){
     image(guy.getCostume(), guy.getX(),guy.getY());
     
     fill(255, 0, 255);
-    rect(boss.getX(), boss.getY(), 30, 30);
+    //rect(boss.getX(), boss.getY(), 30, 30);//boss is here
+    image(boss.getCostume(), boss.getX(), boss.getY());
     if(boss.hover()){
         textSize(12);
         textAlign(RIGHT);
@@ -93,7 +94,7 @@ void draw(){
         chosen = mon;
         scene = "Fight";
       }
-    }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
+    }if(boss.getX() <= guy.getX() && boss.getY() <= guy.getY() ){
         fight(boss, guy);
       }
   }
@@ -103,7 +104,7 @@ void draw(){
     textAlign(CENTER, CENTER);
     textSize(20);
     fill(0);
-    text("Move with WASD \n Run into monsters to fight them \n Don't die lol", width/2, height/2);
+    text("Move with WASD \n Run into monsters to fight them \n Hover over monsters to view their stats \n Some monsters are stronger than others! Fight your way to the boss and beat him", width/2, height/2);
     Button titleButton = new Button("back to title", width/2-100, height/2+100, 200, 100);
     buttons.add(titleButton);
     titleButton.show();
@@ -180,6 +181,8 @@ void draw(){
   
 
 void rooms(int xpos, int ypos, int width1, int length1){//can change this to be corners, atm it is top left coords, length, width
+  PImage floor = loadImage("floor.jpg");
+  floor.resize(30,30);
 //this fills in all whitespace
   for(int i = xpos; i < xpos+width1; i+=30){//establishes the grid system
     for(int j = ypos; j < ypos+length1; j+=30){
@@ -187,9 +190,7 @@ void rooms(int xpos, int ypos, int width1, int length1){//can change this to be 
         Wall newWall = new Wall(i, j);
         walls.add(newWall);
       }
-      fill(255);
-      stroke(0);
-      rect(i, j, 30, 30);//all white
+      image(floor, i, j);
     }
   }
   
@@ -215,10 +216,14 @@ void randomSpawn(ArrayList<Monster> monsters,  int roomX, int roomY, int roomWid
     //the -2 part elimnates the walls of the room, monsters can't spawn there, the +30 at the very end translates it so the walls are correct
     //*30 after the above translates it back into processing grid numbers so it gets drawn right
     //the +roomX translates it into the room number
-    int y = (int)(Math.random()*((roomHeight/30)-2))*30+roomY+30;
+    int y = (int)(Math.random()*((roomHeight/30)-3))*30+roomY+30+30;//extra 30 for height disc.
     Monster create = new Monster(x, y);
     for(Monster a : monsters){//check if its on top of an already spawned monster
-      if(create.getX()==a.getX() && create.getY()==a.getY()){
+      //if(create.getX()==a.getX() && create.getY()==a.getY()){
+      //  duplicate=true;
+      //  break;//faster loopings
+      //}
+      if((Math.abs(create.getX()-a.getX())<=50 && Math.abs(create.getY()-a.getY())<=50)||(create.getX()>=870 && create.getY()>=660)){
         duplicate=true;
         break;//faster loopings
       }

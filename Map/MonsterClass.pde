@@ -5,6 +5,7 @@ public class Monster{
   float speed;
   int x;
   int y;
+  PImage costume;
   
   public Monster(int x, int y){
      monsterType = "Monster";
@@ -24,6 +25,12 @@ public class Monster{
       }
      this.x=x;
      this.y=y;
+     costume = loadImage("monsterSprite.png");
+     costume.resize(30,50);
+  }
+  
+  PImage getCostume(){
+    return costume;
   }
   
   public float strength(){

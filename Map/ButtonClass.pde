@@ -13,29 +13,26 @@ public class Button{
   void pressed(){
     if(scene.equals("Title") && use.equals("Play")){
       scene = "Game";
-      println("pressed playButton");
     }
     if(use.equals("Settings")){
       scene = "Settings";
     }
     if(use.equals("Restart")){
-     scene = "Game";
-     println("pressed restartButton");  
+     scene = "Game"; 
     }
     if(scene.equals("Title") && use.equals("Instructions")){
       scene = "Instructions";
-      println("pressed instruction");
     }
     if(scene.equals("Instructions")&& use.equals("back to title")){
       scene = "Title";
-      println("pressed titleButton");
     }
     if(scene.equals("Lose") && use.equals("back to title")){
       scene = "Title";
-      println("pressed titleButton");
       randomSpawn(monsters, 150, 150, 900, 600, 30);
       guy = new Player("name", 180, 180);
       boss = new Boss(990, 690); 
+      monsters = new ArrayList<Monster>();
+      randomSpawn(monsters, 150, 150, 900, 600, 30);
     }
     
   }
