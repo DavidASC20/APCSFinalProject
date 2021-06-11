@@ -75,6 +75,21 @@ void draw(){
     buttons.add(titleButton);
     titleButton.show();
   }
+  
+  if(scene.equals("Lose")){
+    text("You died, Try Again", width / 2 - 40, height / 2);
+    background(0);
+    Button restart = new Button("back to title", width/2-100, height/2+100, 200, 100);
+    buttons.add(restart);
+    restart.show();
+  }
+  
+  if(scene.equals("Win")){
+    stroke(255,0,0);
+    background(0);
+    text("You beat the game!", width / 2 - 40, height / 2);
+    
+  }
 }
   
 
@@ -197,10 +212,12 @@ void fight(Boss b, Player p){
     
   }
   if(PlayerHealth > 0){
-    clear();
-    text("You beat the game!", width / 2 - 40, height / 2);
-  }clear();
-  text("You died, Try Again", width / 2 - 40, height / 2);
+    //clear();
+    //text("You beat the game!", width / 2 - 40, height / 2);
+    scene = "Win";
+  }scene = "Lose";//clear();
+  //text("You died, Try Again", width / 2 - 40, height / 2);
+  
 }
 
 

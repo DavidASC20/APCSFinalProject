@@ -29,12 +29,19 @@ public class Button{
       scene = "Instructions";
       println("pressed instruction");
     }
-    if(scene.equals("Instructions") && use.equals("back to title")){
+    if(scene.equals("Instructions")&& use.equals("back to title")){
       scene = "Title";
       println("pressed titleButton");
     }
+    if(scene.equals("Lose") && use.equals("back to title")){
+      scene = "Title";
+      println("pressed titleButton");
+      randomSpawn(monsters, 150, 150, 900, 600, 30);
+      guy = new Player("name", 180, 180);
+      boss = new Boss(990, 690); 
+    }
+    
   }
-  
   void show(){
     fill(100);
     stroke(128, 15, 6);
