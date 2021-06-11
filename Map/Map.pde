@@ -76,7 +76,9 @@ void draw(){
       
     }
     fill(0, 255, 0);
-    rect(guy.getX(), guy.getY(), 30, 30);//player is green
+    //rect(guy.getX(), guy.getY(), 30, 30);//player is green
+    image(guy.getCostume(), guy.getX(),guy.getY());
+    
     fill(255, 0, 255);
     rect(boss.getX(), boss.getY(), 30, 30);
     if(boss.hover()){
@@ -281,6 +283,7 @@ void keyPressed(){
   
   if(key == 119 || key == 87){//w or W, up
     guy.move(0,-30);
+    guy.setCostume(1);
     for(Wall a : walls){
       if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
         guy.move(0,30);
@@ -290,6 +293,7 @@ void keyPressed(){
   }
   if(key == 97 || key == 65){//a or A, left
    guy.move(-30,0);
+   guy.setCostume(3);
    for(Wall a : walls){
       if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
         guy.move(30,0);
@@ -298,6 +302,7 @@ void keyPressed(){
   }
   if(key == 115 || key == 83){//s or S, down
    guy.move(0,30);
+   guy.setCostume(2);
    for(Wall a : walls){
       if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
         guy.move(0,-30);
@@ -306,6 +311,7 @@ void keyPressed(){
   }
   if(key == 100 || key == 68){//d or D, right
    guy.move(30,0);
+   guy.setCostume(4);
    for(Wall a : walls){
       if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
         guy.move(-30,0);
