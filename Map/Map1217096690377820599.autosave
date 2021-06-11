@@ -1,11 +1,10 @@
 ArrayList<Monster> monsters = new ArrayList<Monster>();
 ArrayList<Wall> walls = new ArrayList<Wall>();
 ArrayList<Button> buttons = new ArrayList<Button>();
-PImage wall;
 Player guy;
 Boss boss;
+Monster chosen;
 String scene;
-double image;
 void setup(){
   size(1200, 900);
   fill(255);
@@ -16,15 +15,21 @@ void setup(){
   randomSpawn(monsters, 150, 150, 900, 600, 30);
   guy = new Player("name", 180, 180);
   boss = new Boss(990, 690); 
-  wall = loadImage("wall1.gif");
-  wall.resize(30,30);
-  
 }
 
 void display(){
   textSize(12);
   textAlign(LEFT);
   text(guy.getStats(), 0, 0); 
+}
+
+void fightDisplay(float[] x){
+  textSize(30);
+  textAlign(CENTER);
+  fill(100, 255, 0);
+  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 250, 200);
+  fill(255, 0, 0);
+  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 1000, 200);
 }
 
 void draw(){
@@ -58,12 +63,8 @@ void draw(){
         
     }
     for(Wall a : walls){//if there is a wall there, greyify
-      //fill(100);
-      //rect(a.getX(), a.getY(), 30, 30);
-      image(wall, a.getX(), a.getY());
-      
-      
-      
+      fill(100);
+      rect(a.getX(), a.getY(), 30, 30);
     }
     fill(0, 255, 0);
     rect(guy.getX(), guy.getY(), 30, 30);//player is green
@@ -78,7 +79,8 @@ void draw(){
     for(int i = 0; i < monsters.size(); i++){
       Monster mon = monsters.get(i);
       if(mon.getX() == guy.getX() && mon.getY() == guy.getY()){
-        fight(mon, guy);
+        chosen = mon;
+        scene = "Fight";///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////MARKER
       }
     }if(boss.getX() == guy.getX() && boss.getY() == guy.getY()){
         fight(boss, guy);
@@ -120,6 +122,22 @@ void draw(){
   
   if(scene.equals("Fight")){
     background(190);
+    Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
+    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);////////////////////////////////////MARKER
+    buttons.add(attackButton);
+    buttons.add(backButton);
+    attackButton.show();
+    backButton.show();
+    
+    
+  float PlayerHealth = guy.health();
+  float PlayerStrength = guy.strength();
+  float PlayerSpeed = guy.speed();
+  float MonHealth = chosen.health();
+  float MonStrength = chosen.strength();
+  float MonSpeed = chosen.speed();
+  float[] together = {PlayerHealth, PlayerStrength, PlayerSpeed, MonHealth, MonStrength, MonSpeed};
+  fightDisplay(together);
   }
 }
   
@@ -282,6 +300,13 @@ void keyPressed(){
       }
     }
   }
+  for(Monster a : monsters){
+      if(dist(guy.getX(), guy.getY(), a.getX(), a.getY())<=5){
+        guy.move(30,0);
+        //start encounter
+      }
+    }
+  }
   if(key == 115 || key == 83){//s or S, down
    guy.move(0,30);
    for(Wall a : walls){
@@ -297,6 +322,9 @@ void keyPressed(){
         guy.move(-30,0);
       }
     }
+  }
+  if(key == ' '){
+    println(scene);
   }
 
 }
