@@ -16,6 +16,7 @@ public class Button{
     }if(use.equals("Back")){
       scene = "Game";
       println("pressed backButton");
+      println(scene);
     }
     if(scene.equals("Title") && use.equals("Play")){
       scene = "Game";

@@ -24,10 +24,12 @@ void display(){
 }
 
 void fightDisplay(float[] x){
-  textSize(12);
-  textAlign(LEFT);
-  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 50, 0);
-  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 50, 800);
+  textSize(30);
+  textAlign(CENTER);
+  fill(100, 255, 0);
+  text("Health: " + x[0] +"\nStrength: " + x[1] + "\nSpeed: " + x[2], 250, 200);
+  fill(255, 0, 0);
+  text("Health: " + x[3] +"\nStrength: " + x[4] + "\nSpeed: " + x[5], 1000, 200);
 }
 
 void draw(){
