@@ -123,13 +123,10 @@ void draw(){
   if(scene.equals("Fight")){
     background(190);
     Button attackButton = new Button("Attack", width/2-100, height/2-100, 200, 100);
-    Button backButton = new Button("Back", width/2-100, height/2+50, 200, 100);
     buttons.add(attackButton);
-    buttons.add(backButton);
     attackButton.show();
-    backButton.show();
     
-    
+  
   float PlayerHealth = guy.health();
   float PlayerStrength = guy.strength();
   float PlayerSpeed = guy.speed();
@@ -138,6 +135,33 @@ void draw(){
   float MonSpeed = chosen.speed();
   float[] together = {PlayerHealth, PlayerStrength, PlayerSpeed, MonHealth, MonStrength, MonSpeed};
   fightDisplay(together);
+  
+  while(PlayerHealth > 0 && MonHealth > 0){
+     if(PlayerSpeed > MonSpeed){
+      MonHealth -= PlayerStrength;
+      if(MonHealth <= 0){
+        break;
+      }PlayerHealth -= MonStrength;
+    }else{
+      PlayerHealth -= MonStrength;
+      if(PlayerHealth <= 0){
+        break;
+      }MonHealth -= PlayerStrength;
+    }
+    
+  }if(PlayerHealth > MonHealth){
+    for(int i = 0; i < monsters.size(); i++){
+      if(monsters.get(i).getX() == chosen.getX() && monsters.get(i).getY() == chosen.getY()){
+        monsters.remove(i);
+      }
+    }
+      guy.kill();
+    }
+    else{
+      //clear();
+      //text("You died, Try Again", width / 2, height / 2);
+      scene = "Lose";
+    }
   }
 }
   
