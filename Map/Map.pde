@@ -132,7 +132,7 @@ void draw(){
   }
   
   if(scene.equals("Fight")){
-    background(190);
+    //background(190);
     
   
   float PlayerHealth = guy.health();
@@ -142,7 +142,7 @@ void draw(){
   float MonStrength = chosen.strength();
   float MonSpeed = chosen.speed();
   float[] together = {PlayerHealth, PlayerStrength, PlayerSpeed, MonHealth, MonStrength, MonSpeed};
-  fightDisplay(together);
+  //fightDisplay(together);
   
   while(PlayerHealth > 0 && MonHealth > 0){
      if(PlayerSpeed > MonSpeed){
