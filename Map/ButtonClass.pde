@@ -33,11 +33,11 @@ public class Button{
       scene = "Instructions";
       println("pressed instruction");
     }
-    if(scene.equals("Instructions")&& use.equals("back to title")){
+    if(scene.equals("Instructions")&& use.equals("Back to Title")){
       scene = "Title";
       println("pressed titleButton");
     }
-    if(scene.equals("Lose") && use.equals("back to title")){
+    if(scene.equals("Lose") && use.equals("Back to Title")){
       scene = "Title";
       println("pressed titleButton");
       randomSpawn(monsters, 150, 150, 900, 600, 30);
